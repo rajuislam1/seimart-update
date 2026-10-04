@@ -1,0 +1,2850 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>My Account | Sei Mart</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+
+    <style>
+
+        /* =========================
+           ACCOUNT PAGE
+        ========================= */
+
+        .account-page {
+            min-height: 80vh;
+            padding: 50px 20px;
+            background: #f8f8f8;
+        }
+
+
+        .account-box {
+            max-width: 900px;
+            margin: auto;
+            background: #ffffff;
+            border: 1px solid #e2e2e2;
+            border-radius: 10px;
+            padding: 35px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+
+        .account-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+
+        .account-title h1 {
+            margin-bottom: 8px;
+        }
+
+
+        .account-title p {
+            color: #777777;
+        }
+
+
+        /* =========================
+           PROFILE
+        ========================= */
+
+        .profile-card {
+            border: 1px solid #e2e2e2;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+
+        .profile-card h2 {
+            margin-bottom: 20px;
+        }
+
+
+        .profile-top {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+
+
+        .profile-avatar {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: #C9A227;
+            color: #111111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+
+        .profile-welcome {
+            margin: 0;
+            font-size: 21px;
+            font-weight: 700;
+            color: #222222;
+        }
+
+
+        .profile-view,
+        .profile-edit {
+            border-top: 1px solid #eeeeee;
+            padding-top: 15px;
+        }
+
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 13px 0;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+
+        .info-label {
+            font-weight: 700;
+            color: #555555;
+        }
+
+
+        .info-value {
+            color: #222222;
+            text-align: right;
+            word-break: break-word;
+        }
+
+
+        /* =========================
+           FORMS
+        ========================= */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 5px;
+        }
+
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+
+        .form-group label {
+            margin-bottom: 7px;
+            font-weight: 600;
+            color: #444444;
+        }
+
+
+        .form-group input,
+        .form-group textarea {
+
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 13px;
+            border: 1px solid #dddddd;
+            border-radius: 7px;
+            font-size: 14px;
+            outline: none;
+            font-family: inherit;
+
+        }
+
+
+        .form-group textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #C9A227;
+        }
+
+
+        .form-group input:disabled,
+        .form-group textarea:disabled {
+            background: #f5f5f5;
+            color: #555555;
+            cursor: not-allowed;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .btn {
+            border: none;
+            border-radius: 7px;
+            padding: 11px 18px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+
+        .btn-gold {
+            background: #C9A227;
+            color: #111111;
+        }
+
+
+        .btn-gold:hover {
+            background: #A88418;
+            color: #ffffff;
+        }
+
+
+        .btn-light {
+            background: #eeeeee;
+            color: #222222;
+        }
+
+
+        .btn-light:hover {
+            background: #dddddd;
+        }
+
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+
+        .message {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           ORDER HISTORY
+        ========================= */
+
+        .orders-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+
+        .order-card {
+            border: 1px solid #e2e2e2;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+
+        .order-summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 15px;
+            cursor: pointer;
+            background: #fafafa;
+            transition: 0.2s;
+        }
+
+
+        .order-summary:hover {
+            background: #f3f3f3;
+        }
+
+
+        .order-main {
+            min-width: 0;
+        }
+
+
+        .order-id {
+            font-size: 13px;
+            color: #777777;
+            margin-bottom: 5px;
+        }
+
+
+        .order-item-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #222222;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+
+        .order-toggle {
+            font-size: 20px;
+            color: #777777;
+            flex-shrink: 0;
+            transition: transform 0.2s;
+        }
+
+
+        .order-card.active .order-toggle {
+            transform: rotate(180deg);
+        }
+
+
+        .order-details {
+            display: none;
+            padding: 16px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+
+        .order-card.active .order-details {
+            display: block;
+        }
+
+
+        .order-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+        }
+
+
+        .detail-row {
+            padding: 8px 0;
+            border-bottom: 1px solid #eeeeee;
+            font-size: 14px;
+            word-break: break-word;
+        }
+
+
+        .detail-row strong {
+            color: #555555;
+        }
+
+
+        /* =========================
+           PAYMENT STATUS
+        ========================= */
+
+        .payment-status {
+            display: inline-block;
+            padding: 4px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+
+        .payment-status.pending {
+            background: #fff4d6;
+            color: #9a6b00;
+        }
+
+
+        .payment-status.submitted {
+            background: #e9f7ef;
+            color: #26734d;
+        }
+
+
+        .payment-status.paid {
+            background: #e9f7ef;
+            color: #26734d;
+        }
+
+
+        .payment-status.failed {
+            background: #fff0f0;
+            color: #c62828;
+        }
+
+
+        /* =========================
+           ORDER STATUS
+        ========================= */
+
+        .order-status {
+            display: inline-block;
+            padding: 4px 9px;
+            border-radius: 20px;
+            background: #f5f0df;
+            color: #6f5a13;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .order-products {
+            margin-top: 14px;
+            border-top: 1px solid #eeeeee;
+            padding-top: 12px;
+        }
+
+
+        .order-product {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eeeeee;
+            font-size: 14px;
+        }
+
+
+        .order-product:last-child {
+            border-bottom: none;
+        }
+
+
+        .order-product-info {
+            min-width: 0;
+        }
+
+
+        .order-product-name {
+            font-weight: 700;
+            color: #222222;
+        }
+
+
+        .order-product-meta {
+            margin-top: 4px;
+            color: #777777;
+            font-size: 12px;
+        }
+
+
+        .order-product-price {
+            flex-shrink: 0;
+            font-weight: 700;
+            color: #333333;
+        }
+
+
+        /* =========================
+           ORDER FINANCIAL SUMMARY
+        ========================= */
+
+        .order-financial {
+            margin-top: 15px;
+            padding-top: 12px;
+            border-top: 1px solid #eeeeee;
+        }
+
+
+        .financial-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 6px 0;
+            font-size: 14px;
+        }
+
+
+        .financial-row span:first-child {
+            color: #666666;
+        }
+
+
+        .financial-row.discount span:last-child {
+            color: #c62828;
+            font-weight: 700;
+        }
+
+
+        .financial-total {
+            margin-top: 8px;
+            padding-top: 12px;
+            border-top: 2px solid #dddddd;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+
+        .financial-total span:last-child {
+            color: #3f6f5a;
+        }
+
+
+        /* =========================
+           EMPTY ORDERS
+        ========================= */
+
+        .empty-orders {
+            text-align: center;
+            padding: 25px 10px;
+            color: #777777;
+        }
+
+
+        .empty-orders a {
+            color: #C9A227;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           LOGOUT
+        ========================= */
+
+        .logout-section {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+
+        .logout-btn {
+            background: #111111;
+            color: #ffffff;
+            border: none;
+            padding: 11px 28px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+
+        .logout-btn:hover {
+            background: #333333;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            .account-page {
+                padding: 30px 12px;
+            }
+
+
+            .account-box {
+                padding: 22px 16px;
+            }
+
+
+            .form-grid,
+            .order-detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+
+            .info-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+
+            .info-value {
+                text-align: left;
+            }
+
+
+            .profile-top {
+                align-items: flex-start;
+            }
+
+
+            .profile-avatar {
+                width: 65px;
+                height: 65px;
+                font-size: 28px;
+            }
+
+
+            .profile-welcome {
+                font-size: 18px;
+            }
+
+
+            .order-item-name {
+                max-width: 230px;
+            }
+
+
+            .order-product {
+                align-items: flex-start;
+            }
+
+
+            .financial-row,
+            .financial-total {
+                gap: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SEI MART NAVBAR
+         ===================================================== -->
+
+    <header>
+
+        <div class="container">
+
+            <div class="header-top">
+
+
+                <a href="index.html" class="logo">
+
+                    <svg
+                        class="navbar-logo-icon"
+                        viewBox="0 0 100 100"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true">
+
+                        <path
+                            d="M18 22h10l7 40h40l10-29H34"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+
+                        <path
+                            d="M42 44h27"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="7"
+                            stroke-linecap="round" />
+
+                        <circle
+                            cx="40"
+                            cy="76"
+                            r="5"
+                            fill="currentColor" />
+
+                        <circle
+                            cx="72"
+                            cy="76"
+                            r="5"
+                            fill="currentColor" />
+
+                        <path
+                            d="M12 35h13M8 45h15"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="5"
+                            stroke-linecap="round" />
+
+                    </svg>
+
+
+                    <span class="navbar-logo-text">
+                        Sei <strong>Mart</strong>
+                    </span>
+
+                </a>
+
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search products...">
+
+                    <button type="button">
+                        🔍
+                    </button>
+
+                </div>
+
+
+                <div class="header-actions">
+
+                    <div
+                        id="accountArea"
+                        class="account-link">
+
+                        👤
+
+                        <a href="login.html">
+                            Sign In
+                        </a>
+
+                    </div>
+
+
+                    <a
+                        href="wishlist.html"
+                        class="wishlist-link">
+
+                        ❤️ Wishlist
+
+                    </a>
+
+
+                    <a
+                        href="cart.html"
+                        class="cart-link">
+
+                        🛒 Cart
+
+                        <span
+                            id="cartCount"
+                            class="cart-count">
+
+                            0
+
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="navbar">
+
+            <div class="container">
+
+                <ul class="nav-menu">
+
+
+                    <li class="category-menu">
+
+                        <button
+                            type="button"
+                            class="category-dropdown">
+
+                            ☰ All Categories
+
+                        </button>
+
+
+                        <div class="category-list">
+
+                            <a href="products.html?category=electronics">
+                                Electronics
+                            </a>
+
+                            <a href="products.html?category=mobile">
+                                Mobile Accessories
+                            </a>
+
+                            <a href="products.html?category=fashion">
+                                Fashion
+                            </a>
+
+                            <a href="products.html?category=shoes">
+                                Shoes
+                            </a>
+
+                            <a href="products.html?category=cosmetics">
+                                Cosmetics
+                            </a>
+
+                            <a href="products.html?category=perfume">
+                                Perfume
+                            </a>
+
+                            <a href="products.html?category=watches">
+                                Watches
+                            </a>
+
+                            <a href="products.html?category=home">
+                                Home & Living
+                            </a>
+
+                            <a href="products.html?category=jewellery">
+                                Jewellery
+                            </a>
+
+                            <a href="products.html?category=beauty">
+                                Beauty & Personal Care
+                            </a>
+
+                        </div>
+
+                    </li>
+
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="products.html">
+                            Products
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="products.html?filter=deals">
+                            Today's Deals
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="products.html?filter=new">
+                            New Arrivals
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="order-tracking.html">
+                            Order Tracking
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="help.html">
+                            Help & Support
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="index.html#contact">
+                            Contact
+                        </a>
+                    </li>
+
+
+                </ul>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         ACCOUNT PAGE
+         ===================================================== -->
+
+    <div class="account-page">
+
+
+        <div class="account-box">
+
+
+            <!-- PAGE TITLE -->
+
+            <div class="account-title">
+
+                <h1>
+                    My Account
+                </h1>
+
+                <p>
+                    Manage your profile, address and orders
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PROFILE
+                 ================================================= -->
+
+            <div class="profile-card">
+
+
+                <div class="section-title">
+
+                    <h2>
+                        Profile Information
+                    </h2>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-gold"
+                        id="editProfileBtn">
+
+                        ✏️ Edit Profile
+
+                    </button>
+
+                </div>
+
+
+                <div class="profile-top">
+
+                    <div
+                        class="profile-avatar"
+                        id="profileAvatar">
+
+                        R
+
+                    </div>
+
+
+                    <p
+                        class="profile-welcome"
+                        id="profileWelcome">
+
+                        Welcome to Sei Mart
+
+                    </p>
+
+                </div>
+
+
+                <!-- PROFILE VIEW -->
+
+                <div
+                    class="profile-view"
+                    id="profileView">
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            Name
+                        </span>
+
+                        <span
+                            class="info-value"
+                            id="accountName">
+
+                            -
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            Email
+                        </span>
+
+                        <span
+                            class="info-value"
+                            id="accountEmail">
+
+                            -
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROFILE EDIT -->
+
+                <div
+                    class="profile-edit"
+                    id="profileEdit"
+                    style="display:none;">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label>
+                                Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="editProfileName">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="editProfileEmail">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="action-buttons">
+
+                        <button
+                            type="button"
+                            class="btn btn-gold"
+                            id="saveProfileBtn">
+
+                            Save Changes
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-light"
+                            id="cancelProfileBtn">
+
+                            Cancel
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="message"
+                        id="profileMessage">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SHIPPING ADDRESS
+                 ================================================= -->
+
+            <div class="profile-card">
+
+
+                <div class="section-title">
+
+                    <h2>
+                        Shipping Address
+                    </h2>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-gold"
+                        id="editAddressBtn">
+
+                        ✏️ Edit Address
+
+                    </button>
+
+                </div>
+
+
+                <form id="shippingForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label>
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="text"
+                                id="shippingPhone"
+                                disabled
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                District
+                            </label>
+
+                            <input
+                                type="text"
+                                id="shippingDistrict"
+                                disabled
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Area / Upazila
+                            </label>
+
+                            <input
+                                type="text"
+                                id="shippingArea"
+                                disabled
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Post Code
+                            </label>
+
+                            <input
+                                type="text"
+                                id="shippingPostCode"
+                                disabled>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label>
+                                Full Address
+                            </label>
+
+                            <textarea
+                                id="shippingAddress"
+                                disabled
+                                required></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="action-buttons"
+                        id="addressActions"
+                        style="display:none;">
+
+                        <button
+                            type="submit"
+                            class="btn btn-gold">
+
+                            Save Changes
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-light"
+                            id="cancelAddressBtn">
+
+                            Cancel
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="message"
+                        id="addressMessage">
+                    </div>
+
+                </form>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ORDER HISTORY
+                 ================================================= -->
+
+            <div class="profile-card">
+
+                <div class="section-title">
+
+                    <h2>
+                        Order History
+                    </h2>
+
+                </div>
+
+
+                <div
+                    class="orders-list"
+                    id="ordersList">
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 LOGOUT
+                 ================================================= -->
+
+            <div class="logout-section">
+
+                <button
+                    type="button"
+                    class="logout-btn"
+                    id="logoutBtn">
+
+                    Logout
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SCRIPT.JS
+         ===================================================== -->
+
+    <script src="script.js">
+function requestReturn(orderId) {
+    var reason = prompt("Why do you want to return this order? (optional)");
+    if (reason === null) return; // cancelled
+    var list = [];
+    try { list = JSON.parse(localStorage.getItem("seiMartReturnRequests") || "[]"); } catch (e) {}
+    if (list.some(function (r) { return String(r.orderId) === String(orderId) && r.status !== "Rejected"; })) {
+        alert("You already submitted a return request for this order.");
+        return;
+    }
+    var user = {};
+    try { user = JSON.parse(localStorage.getItem("seiMartUser") || "{}"); } catch (e) {}
+    list.unshift({
+        id: "RR" + Date.now(),
+        orderId: orderId,
+        reason: reason || "",
+        status: "Pending",
+        customer: user.name || user.email || "Customer",
+        email: user.email || "",
+        createdAt: new Date().toISOString(),
+        date: new Date().toLocaleString("en-BD")
+    });
+    localStorage.setItem("seiMartReturnRequests", JSON.stringify(list));
+    alert("Return/Refund request submitted. Our team will review it.");
+}
+</script>
+
+
+    <script>
+
+        /* =====================================================
+           LOGIN CHECK
+           ===================================================== */
+
+        const loggedIn =
+            localStorage.getItem(
+                "seiMartLoggedIn"
+            );
+
+
+        const userData =
+            localStorage.getItem(
+                "seiMartUser"
+            );
+
+
+        if (
+            loggedIn !== "true" ||
+            !userData
+        ) {
+
+            window.location.href =
+                "login.html";
+
+        }
+
+
+        let user = null;
+
+
+        try {
+
+            user =
+                JSON.parse(
+                    userData
+                );
+
+        } catch (error) {
+
+            user = null;
+
+        }
+
+
+        if (!user) {
+
+            localStorage.removeItem(
+                "seiMartLoggedIn"
+            );
+
+            localStorage.removeItem(
+                "seiMartUser"
+            );
+
+            window.location.href =
+                "login.html";
+
+        }
+
+
+
+        /* =====================================================
+           PROFILE
+           ===================================================== */
+
+        const accountName =
+            document.getElementById(
+                "accountName"
+            );
+
+
+        const accountEmail =
+            document.getElementById(
+                "accountEmail"
+            );
+
+
+        const profileAvatar =
+            document.getElementById(
+                "profileAvatar"
+            );
+
+
+        const profileWelcome =
+            document.getElementById(
+                "profileWelcome"
+            );
+
+
+        const profileView =
+            document.getElementById(
+                "profileView"
+            );
+
+
+        const profileEdit =
+            document.getElementById(
+                "profileEdit"
+            );
+
+
+        const editProfileBtn =
+            document.getElementById(
+                "editProfileBtn"
+            );
+
+
+        const saveProfileBtn =
+            document.getElementById(
+                "saveProfileBtn"
+            );
+
+
+        const cancelProfileBtn =
+            document.getElementById(
+                "cancelProfileBtn"
+            );
+
+
+        const editProfileName =
+            document.getElementById(
+                "editProfileName"
+            );
+
+
+        const editProfileEmail =
+            document.getElementById(
+                "editProfileEmail"
+            );
+
+
+        const profileMessage =
+            document.getElementById(
+                "profileMessage"
+            );
+
+
+        function loadProfile() {
+
+            accountName.textContent =
+                user.name ||
+                "Customer";
+
+
+            accountEmail.textContent =
+                user.email ||
+                "";
+
+
+            profileWelcome.textContent =
+                "Welcome, " +
+                (
+                    user.name ||
+                    "Customer"
+                ) +
+                "!";
+
+
+            const firstLetter =
+                (
+                    user.name ||
+                    "C"
+                )
+                .trim()
+                .charAt(0)
+                .toUpperCase();
+
+
+            profileAvatar.textContent =
+                firstLetter;
+
+        }
+
+
+        loadProfile();
+
+
+
+        /* EDIT PROFILE */
+
+        editProfileBtn.addEventListener(
+            "click",
+            function () {
+
+                editProfileName.value =
+                    user.name ||
+                    "";
+
+
+                editProfileEmail.value =
+                    user.email ||
+                    "";
+
+
+                profileMessage.textContent =
+                    "";
+
+
+                profileView.style.display =
+                    "none";
+
+
+                profileEdit.style.display =
+                    "block";
+
+
+                editProfileBtn.style.display =
+                    "none";
+
+            }
+        );
+
+
+
+        /* CANCEL PROFILE EDIT */
+
+        cancelProfileBtn.addEventListener(
+            "click",
+            function () {
+
+                profileView.style.display =
+                    "block";
+
+
+                profileEdit.style.display =
+                    "none";
+
+
+                editProfileBtn.style.display =
+                    "inline-block";
+
+
+                profileMessage.textContent =
+                    "";
+
+            }
+        );
+
+
+
+        /* SAVE PROFILE */
+
+        saveProfileBtn.addEventListener(
+            "click",
+            function () {
+
+                const newName =
+                    editProfileName.value.trim();
+
+
+                const newEmail =
+                    editProfileEmail.value.trim();
+
+
+                if (!newName) {
+
+                    profileMessage.textContent =
+                        "Please enter your name.";
+
+                    return;
+
+                }
+
+
+                if (!newEmail) {
+
+                    profileMessage.textContent =
+                        "Please enter your email.";
+
+                    return;
+
+                }
+
+
+                user.name =
+                    newName;
+
+
+                user.email =
+                    newEmail;
+
+
+                localStorage.setItem(
+                    "seiMartUser",
+                    JSON.stringify(user)
+                );
+
+
+                loadProfile();
+
+
+                profileView.style.display =
+                    "block";
+
+
+                profileEdit.style.display =
+                    "none";
+
+
+                editProfileBtn.style.display =
+                    "inline-block";
+
+
+                profileMessage.textContent =
+                    "Profile updated successfully.";
+
+            }
+        );
+
+
+
+        /* =====================================================
+           SHIPPING ADDRESS
+           ===================================================== */
+
+        const shippingPhone =
+            document.getElementById(
+                "shippingPhone"
+            );
+
+
+        const shippingDistrict =
+            document.getElementById(
+                "shippingDistrict"
+            );
+
+
+        const shippingArea =
+            document.getElementById(
+                "shippingArea"
+            );
+
+
+        const shippingPostCode =
+            document.getElementById(
+                "shippingPostCode"
+            );
+
+
+        const shippingAddress =
+            document.getElementById(
+                "shippingAddress"
+            );
+
+
+        const editAddressBtn =
+            document.getElementById(
+                "editAddressBtn"
+            );
+
+
+        const addressActions =
+            document.getElementById(
+                "addressActions"
+            );
+
+
+        const cancelAddressBtn =
+            document.getElementById(
+                "cancelAddressBtn"
+            );
+
+
+        const shippingForm =
+            document.getElementById(
+                "shippingForm"
+            );
+
+
+        const addressMessage =
+            document.getElementById(
+                "addressMessage"
+            );
+
+
+        const addressInputs = [
+
+            shippingPhone,
+            shippingDistrict,
+            shippingArea,
+            shippingPostCode,
+            shippingAddress
+
+        ];
+
+
+        let originalAddress = {};
+
+
+
+        /* LOAD ADDRESS */
+
+        function loadShippingAddress() {
+
+            const saved =
+                localStorage.getItem(
+                    "seiMartShippingAddress"
+                );
+
+
+            if (!saved) {
+                return;
+            }
+
+
+            try {
+
+                const address =
+                    JSON.parse(saved);
+
+
+                shippingPhone.value =
+                    address.phone ||
+                    "";
+
+
+                shippingDistrict.value =
+                    address.district ||
+                    "";
+
+
+                shippingArea.value =
+                    address.area ||
+                    "";
+
+
+                shippingPostCode.value =
+                    address.postCode ||
+                    "";
+
+
+                shippingAddress.value =
+                    address.address ||
+                    "";
+
+            } catch (error) {
+
+                console.log(
+                    "Shipping address error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        loadShippingAddress();
+
+
+
+        /* EDIT ADDRESS */
+
+        editAddressBtn.addEventListener(
+            "click",
+            function () {
+
+                originalAddress = {
+
+                    phone:
+                        shippingPhone.value,
+
+                    district:
+                        shippingDistrict.value,
+
+                    area:
+                        shippingArea.value,
+
+                    postCode:
+                        shippingPostCode.value,
+
+                    address:
+                        shippingAddress.value
+
+                };
+
+
+                addressInputs.forEach(
+                    function (input) {
+
+                        input.disabled =
+                            false;
+
+                    }
+                );
+
+
+                editAddressBtn.style.display =
+                    "none";
+
+
+                addressActions.style.display =
+                    "flex";
+
+
+                addressMessage.textContent =
+                    "";
+
+            }
+        );
+
+
+
+        /* CANCEL ADDRESS EDIT */
+
+        cancelAddressBtn.addEventListener(
+            "click",
+            function () {
+
+                shippingPhone.value =
+                    originalAddress.phone ||
+                    "";
+
+
+                shippingDistrict.value =
+                    originalAddress.district ||
+                    "";
+
+
+                shippingArea.value =
+                    originalAddress.area ||
+                    "";
+
+
+                shippingPostCode.value =
+                    originalAddress.postCode ||
+                    "";
+
+
+                shippingAddress.value =
+                    originalAddress.address ||
+                    "";
+
+
+                addressInputs.forEach(
+                    function (input) {
+
+                        input.disabled =
+                            true;
+
+                    }
+                );
+
+
+                addressActions.style.display =
+                    "none";
+
+
+                editAddressBtn.style.display =
+                    "inline-block";
+
+
+                addressMessage.textContent =
+                    "";
+
+            }
+        );
+
+
+
+        /* SAVE ADDRESS */
+
+        shippingForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                if (
+                    !shippingPhone.value.trim() ||
+                    !shippingDistrict.value.trim() ||
+                    !shippingArea.value.trim() ||
+                    !shippingAddress.value.trim()
+                ) {
+
+                    addressMessage.textContent =
+                        "Please fill in all required fields.";
+
+                    return;
+
+                }
+
+
+                const addressData = {
+
+                    phone:
+                        shippingPhone.value.trim(),
+
+                    district:
+                        shippingDistrict.value.trim(),
+
+                    area:
+                        shippingArea.value.trim(),
+
+                    postCode:
+                        shippingPostCode.value.trim(),
+
+                    address:
+                        shippingAddress.value.trim()
+
+                };
+
+
+                localStorage.setItem(
+                    "seiMartShippingAddress",
+                    JSON.stringify(addressData)
+                );
+
+
+                addressInputs.forEach(
+                    function (input) {
+
+                        input.disabled =
+                            true;
+
+                    }
+                );
+
+
+                addressActions.style.display =
+                    "none";
+
+
+                editAddressBtn.style.display =
+                    "inline-block";
+
+
+                addressMessage.textContent =
+                    "Shipping address updated successfully.";
+
+            }
+        );
+
+
+
+        /* =====================================================
+           ORDER HISTORY
+           ===================================================== */
+
+        const ordersList =
+            document.getElementById(
+                "ordersList"
+            );
+
+
+
+        /* =====================================================
+           PAYMENT STATUS CLASS
+           ===================================================== */
+
+        function getPaymentStatusClass(
+            paymentStatus
+        ) {
+
+            const value =
+                String(
+                    paymentStatus ||
+                    ""
+                )
+                .toLowerCase();
+
+
+            if (
+                value.includes("submitted") ||
+                value.includes("paid") ||
+                value.includes("success")
+            ) {
+
+                return "submitted";
+
+            }
+
+
+            if (
+                value.includes("failed") ||
+                value.includes("cancel")
+            ) {
+
+                return "failed";
+
+            }
+
+
+            return "pending";
+
+        }
+
+
+
+        /* =====================================================
+           LOAD ORDERS
+           ===================================================== */
+
+        function loadOrders() {
+
+            ordersList.innerHTML =
+                "";
+
+
+            const savedOrders =
+                localStorage.getItem(
+                    "seiMartOrders"
+                );
+
+
+            if (!savedOrders) {
+
+                ordersList.innerHTML = `
+
+                    <div class="empty-orders">
+
+                        <p>
+                            You have no orders yet.
+                        </p>
+
+                        <a href="products.html">
+                            Start Shopping →
+                        </a>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            let orders = [];
+
+
+            try {
+
+                orders =
+                    JSON.parse(
+                        savedOrders
+                    );
+
+            } catch (error) {
+
+                orders = [];
+
+            }
+
+
+            if (
+                !Array.isArray(orders) ||
+                orders.length === 0
+            ) {
+
+                ordersList.innerHTML = `
+
+                    <div class="empty-orders">
+
+                        <p>
+                            You have no orders yet.
+                        </p>
+
+                        <a href="products.html">
+                            Start Shopping →
+                        </a>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+
+            /* =================================================
+               LATEST ORDER FIRST
+               ================================================= */
+
+            const displayOrders =
+                orders
+                    .map(
+                        function (
+                            order,
+                            originalIndex
+                        ) {
+
+                            return {
+                                order,
+                                originalIndex
+                            };
+
+                        }
+                    )
+                    .reverse();
+
+
+
+            displayOrders.forEach(
+                function ({
+                    order,
+                    originalIndex
+                }) {
+
+
+                    /* =========================
+                       ITEMS
+                       ========================= */
+
+                    const items =
+                        order.items ||
+                        order.cart ||
+                        [];
+
+
+                    let firstItemName =
+                        "Order";
+
+
+                    if (
+                        Array.isArray(items) &&
+                        items.length > 0
+                    ) {
+
+                        firstItemName =
+                            items[0].name ||
+                            "Product";
+
+
+                        if (
+                            items.length > 1
+                        ) {
+
+                            firstItemName +=
+                                " +" +
+                                (
+                                    items.length - 1
+                                ) +
+                                " more";
+
+                        }
+
+                    }
+
+
+
+                    /* =========================
+                       BASIC ORDER DATA
+                       ========================= */
+
+                    const orderId =
+                        order.orderId ||
+                        order.id ||
+                        "N/A";
+
+
+                    const orderDate =
+                        order.date ||
+                        order.orderDate ||
+                        order.createdAt ||
+                        "N/A";
+
+
+                    const paymentMethod =
+                        order.paymentMethod ||
+                        "Cash on Delivery";
+
+
+                    const paymentStatus =
+                        order.paymentStatus ||
+                        (
+                            paymentMethod ===
+                            "Cash on Delivery"
+                            ? "Pending"
+                            : "Payment Submitted"
+                        );
+
+
+                    const status =
+                        order.status ||
+                        "Processing";
+
+
+                    const customer =
+                        order.customer ||
+                        {};
+
+
+                    const customerName =
+                        order.customerName ||
+                        order.name ||
+                        customer.name ||
+                        user.name ||
+                        "N/A";
+
+
+                    const customerEmail =
+                        order.customerEmail ||
+                        order.email ||
+                        customer.email ||
+                        user.email ||
+                        "N/A";
+
+
+                    const customerPhone =
+                        order.phone ||
+                        order.customerPhone ||
+                        customer.phone ||
+                        shippingPhone.value ||
+                        "N/A";
+
+
+                    const district =
+                        order.district ||
+                        customer.district ||
+                        shippingDistrict.value ||
+                        "N/A";
+
+
+                    const area =
+                        order.area ||
+                        customer.area ||
+                        shippingArea.value ||
+                        "N/A";
+
+
+                    const postCode =
+                        order.postCode ||
+                        order.postcode ||
+                        customer.postCode ||
+                        shippingPostCode.value ||
+                        "N/A";
+
+
+                    const fullAddress =
+                        order.address ||
+                        order.shippingAddress ||
+                        customer.address ||
+                        shippingAddress.value ||
+                        "N/A";
+
+
+
+                    /* =========================
+                       PAYMENT DATA
+                       ========================= */
+
+                    const transactionId =
+                        order.transactionId ||
+                        "";
+
+
+                    const couponCode =
+                        order.couponCode ||
+                        "";
+
+
+                    const couponDiscount =
+                        Number(
+                            order.couponDiscount ||
+                            0
+                        );
+
+
+                    const subtotal =
+                        Number(
+                            order.subtotal ||
+                            0
+                        );
+
+
+                    const orderTotal =
+                        Number(
+                            order.total ||
+                            order.grandTotal ||
+                            order.totalAmount ||
+                            0
+                        );
+
+
+
+                    /* =========================
+                       CREATE CARD
+                       ========================= */
+
+                    const card =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    card.className =
+                        "order-card";
+
+
+
+                    /* =========================
+                       SUMMARY
+                       ========================= */
+
+                    const summary =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    summary.className =
+                        "order-summary";
+
+
+                    summary.innerHTML = `
+
+                        <div class="order-main">
+
+                            <div class="order-id">
+
+                                Order ID:
+                                ${orderId}
+
+                            </div>
+
+
+                            <div class="order-item-name">
+
+                                ${firstItemName}
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="order-toggle">
+
+                            ▼
+
+                        </div>
+
+                    `;
+
+
+
+                    /* =========================
+                       DETAILS
+                       ========================= */
+
+                    const details =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    details.className =
+                        "order-details";
+
+
+                    details.innerHTML = `
+
+                        <div class="order-detail-grid">
+
+
+                            <div class="detail-row">
+
+                                <strong>
+                                    Order ID:
+                                </strong>
+
+                                ${orderId}
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <strong>
+                                    Date:
+                                </strong>
+
+                                ${orderDate}
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <strong>
+                                    Payment Method:
+                                </strong>
+
+                                ${paymentMethod}
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <strong>
+                                    Payment Status:
+                                </strong>
+
+                                <span
+                                    class="payment-status ${getPaymentStatusClass(paymentStatus)}">
+
+                                    ${paymentStatus}
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <strong>
+                                    Order Status:
+                                </strong>
+
+                                <span class="order-status">
+
+                                    ${status}
+
+                                </span>
+
+                            </div>
+
+                            <div class="detail-row" style="grid-column: 1 / -1;">
+                                <strong style="display:block;margin-bottom:8px;">Tracking Timeline:</strong>
+                                ${typeof buildStatusTimelineHTML === "function" ? buildStatusTimelineHTML(order) : ""}
+                                <a href="order-tracking.html?id=${encodeURIComponent(orderId)}" style="display:inline-block;margin-top:8px;color:#3f6f5a;font-weight:600;font-size:13px;">Open full tracking →</a>
+                            </div>
+                            <div class="detail-row" style="grid-column: 1 / -1;margin-top:8px;">
+                                ${/deliver/i.test(status) ? `
+                                  <button type="button" class="order-return-btn" onclick="event.stopPropagation(); requestReturn('${String(orderId).replace(/'/g,"\'")}')"
+                                    style="background:#fff;border:1px solid #d9534f;color:#d9534f;padding:8px 14px;border-radius:8px;font-weight:600;cursor:pointer;">
+                                    Request Return / Refund
+                                  </button>
+                                ` : /cancel/i.test(status) ? `<span style="color:#999;font-size:13px;">Order cancelled</span>` :
+                                `<span style="color:#7b877f;font-size:13px;">Return available after delivery</span>`}
+                            </div>
+
+
+                            ${
+                                transactionId
+                                ?
+                                `
+                                <div class="detail-row">
+
+                                    <strong>
+                                        Transaction ID:
+                                    </strong>
+
+                                    ${transactionId}
+
+                                </div>
+                                `
+                                :
+                                ""
+                            }
+
+
+                            <div class="detail-row">
+
+                                <strong>
+                                    Name:
+                                </strong>
+
+                                ${customerName}
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <strong>
+                                    Email:
+                                </strong>
+
+                                ${customerEmail}
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <strong>
+                                    Phone:
+                                </strong>
+
+                                ${customerPhone}
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <strong>
+                                    District:
+                                </strong>
+
+                                ${district}
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <strong>
+                                    Area:
+                                </strong>
+
+                                ${area}
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <strong>
+                                    Post Code:
+                                </strong>
+
+                                ${postCode}
+
+                            </div>
+
+
+                            <div
+                                class="detail-row"
+                                style="grid-column:1/-1;">
+
+                                <strong>
+                                    Address:
+                                </strong>
+
+                                ${fullAddress}
+
+                            </div>
+
+
+                        </div>
+
+                    `;
+
+
+
+                    /* =========================
+                       PRODUCTS
+                       ========================= */
+
+                    if (
+                        Array.isArray(items) &&
+                        items.length > 0
+                    ) {
+
+
+                        const productsDiv =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        productsDiv.className =
+                            "order-products";
+
+
+                        items.forEach(
+                            function (item) {
+
+
+                                const product =
+                                    document.createElement(
+                                        "div"
+                                    );
+
+
+                                product.className =
+                                    "order-product";
+
+
+                                const quantity =
+                                    Number(
+                                        item.quantity ||
+                                        item.qty ||
+                                        1
+                                    );
+
+
+                                const price =
+                                    Number(
+                                        item.price ||
+                                        0
+                                    );
+
+
+                                const total =
+                                    price *
+                                    quantity;
+
+
+                                product.innerHTML = `
+
+                                    <div class="order-product-info">
+
+                                        <div class="order-product-name">
+
+                                            ${
+                                                item.name ||
+                                                "Product"
+                                            }
+
+                                        </div>
+
+
+                                        <div class="order-product-meta">
+
+                                            Qty:
+                                            ${quantity}
+
+                                            ${
+                                                item.color
+                                                ?
+                                                " • Color: " +
+                                                item.color
+                                                :
+                                                ""
+                                            }
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="order-product-price">
+
+                                        ৳${total.toFixed(2)}
+
+                                    </div>
+
+                                `;
+
+
+                                productsDiv.appendChild(
+                                    product
+                                );
+
+                            }
+                        );
+
+
+                        details.appendChild(
+                            productsDiv
+                        );
+
+                    }
+
+
+
+                    /* =========================
+                       FINANCIAL SUMMARY
+                       ========================= */
+
+                    const financial =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    financial.className =
+                        "order-financial";
+
+
+                    let financialHTML = "";
+
+
+
+                    /* SUBTOTAL */
+
+                    if (subtotal > 0) {
+
+                        financialHTML += `
+
+                            <div class="financial-row">
+
+                                <span>
+                                    Subtotal
+                                </span>
+
+                                <span>
+                                    ৳${subtotal.toFixed(2)}
+                                </span>
+
+                            </div>
+
+                        `;
+
+                    }
+
+
+
+                    /* COUPON */
+
+                    if (
+                        couponCode ||
+                        couponDiscount > 0
+                    ) {
+
+                        financialHTML += `
+
+                            <div class="financial-row">
+
+                                <span>
+                                    Coupon
+                                    ${
+                                        couponCode
+                                        ?
+                                        "(" +
+                                        couponCode +
+                                        ")"
+                                        :
+                                        ""
+                                    }
+                                </span>
+
+                                <span>
+                                    Applied
+                                </span>
+
+                            </div>
+
+
+                            <div class="financial-row discount">
+
+                                <span>
+                                    Discount
+                                </span>
+
+                                <span>
+                                    -৳${couponDiscount.toFixed(2)}
+                                </span>
+
+                            </div>
+
+                        `;
+
+                    }
+
+
+
+                    /* FINAL TOTAL */
+
+                    financialHTML += `
+
+                        <div class="financial-total">
+
+                            <span>
+                                Total Amount
+                            </span>
+
+                            <span>
+                                ৳${orderTotal.toFixed(2)}
+                            </span>
+
+                        </div>
+
+                    `;
+
+
+                    financial.innerHTML =
+                        financialHTML;
+
+
+                    details.appendChild(
+                        financial
+                    );
+
+
+
+                    /* =========================
+                       ADD CARD
+                       ========================= */
+
+                    card.appendChild(
+                        summary
+                    );
+
+
+                    card.appendChild(
+                        details
+                    );
+
+
+                    ordersList.appendChild(
+                        card
+                    );
+
+
+
+                    /* =========================
+                       EXPAND / COLLAPSE
+                       ========================= */
+
+                    summary.addEventListener(
+                        "click",
+                        function () {
+
+                            card.classList.toggle(
+                                "active"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+        }
+
+
+        loadOrders();
+
+
+
+        /* =====================================================
+           LOGOUT
+           ===================================================== */
+
+        document
+            .getElementById(
+                "logoutBtn"
+            )
+            .addEventListener(
+                "click",
+                function () {
+
+                    localStorage.removeItem(
+                        "seiMartLoggedIn"
+                    );
+
+
+                    localStorage.removeItem(
+                        "seiMartUser"
+                    );
+
+
+                    window.location.href =
+                        "index.html";
+
+                }
+            );
+
+    </script>
+
+
+</body>
+
+</html>
